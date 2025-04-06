@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website dụng cụ bếp</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container-fluid{
+            height: auto;
+            background-size: cover;
+            background-color: rgb(17, 17, 17);
+        }
+
+        .dau{
+            height: 100px;
+            position: relative;
+            background-color: rgb(8, 8, 8);
+            color: white;
+        }
+
+        #logo{
+            height: 90px;
+            width: 90px;
+            top: 10px;
+            position: absolute;
+            left: 60px;
+        }
+
+        .chu1{
+            height: 80px;
+            margin-left: 150px;
+            margin-top: 35px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .input-group{
+            margin-top: 30px;
+            margin-left: 25px;
+        }
+
+        .user, .giohang{
+            font-size: 30px;
+        }
+
+        .dangky{
+            margin-left: 100px;
+            margin-top: 20px;
+        }
+
+        .dk{
+            margin-right: 10px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+
+        .dn, .dk ,.gh{
+            text-decoration: none;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .nav-menu{
+            background-color: #e21818;
+            height: 50px;
+        }
+
+        .dropdown-menu{
+            background-color: #e21818;
+        }
+
+        .dropdown-item:hover{
+            color: white;
+            background-color: rgb(31, 30, 31);
+        }
+
+        .dk {
+        transition: color 0.3s ease-in-out;
+        }
+
+        .dk:hover {
+        color: red !important;
+        }
+
+        .gh{
+            transition: color 0.3s ease-in-out;
+        }
+
+        .gh:hover{
+            color: red !important;
+        }
+
+        .nav-item:hover{
+            background-color: rgb(31, 30, 31);
+        }
+
+        /* Định dạng submenu */
+        .dropdown-submenu {
+        position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -1px;
+        display: none;
+        position: absolute;
+        }
+
+        /* Hiển thị menu cấp 3 khi hover */
+        .dropdown-submenu:hover .dropdown-menu {
+        display: block;
+        }
+
+        .content{
+            height: 1300px;
+        }
+
+        .card:hover .card-body h5 {
+        color: red; /* Đổi màu chữ thành đỏ khi di chuột vào sản phẩm */
+        }
+
+        .card-header {
+        overflow: hidden;
+        }
+
+        .img-fluid {
+        transition: transform 0.3s ease-in-out;
+        }
+
+        .card-header:hover .img-fluid {
+        transform: scale(1.5);
+        }
+
+        /* banner */
+        #myCarousel {
+        width: 1118px; 
+        height: 100%;
+        overflow: hidden;
+        }
+
+        .category-box {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-title {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+        }
+
+        .list-group-item {
+        font-size: 16px;
+        font-weight: 500;
+        }
+
+        .list-group-item:hover {
+        background-color: #ff6f61; /* Màu nổi bật khi hover */
+        color: white;
+        }
+
+        .footer{
+            height: auto;
+            background-color: #fff;
+            padding-top: 20px;
+        }
+
+        .hotro ul li a ,.lienket  ul li a{
+            text-decoration: none;
+            color: black;
+           
+        }
+
+        .hotro ul li a:hover ,.lienket  ul li a:hover{
+            color: #e21818;
+        }
+
+        .hotro, .lienket{
+            line-height: 30px;
+        }
+
+        .btn-danger {
+         position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+        }
+
+        .btn-danger:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(255, 75, 43, 0.8);
+    } 
+
+    .social-icons a {
+    margin: 0 10px;
+    font-size: 30px;
+    text-decoration: none;
+  }
+
+  .fa-facebook {
+    color: #1877F2;
+  }
+
+  .fa-instagram {
+    color: #E4405F;
+  }
+
+  .zalo-icon {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+  }
+
+        /* modal */
+
+        </style>
+
+        <script>
+        //tên đăng nhập
+        // Kiểm tra tên đăng nhập
+function ktraTaiKhoan() {
+    let name = document.getElementById("name").value.trim();
+    let regex = /^[a-zA-Z][\sa-zA-Z0-9!@#$%^&*()]*$/;
+    let namehl=document.getElementById("name-hl");
+    let nameerr=document.getElementById("name-error");
+    if (regex.test(name)) {
+        namehl.innerHTML = "✔ Hợp lệ";
+        namehl.style.display = "inline";
+        namehl.style.color = "green";
+        nameerr.style.display = "none";
+        return true;
+    } else {
+        nameerr.innerHTML = "Tên đăng nhập phải bắt đầu bằng chữ cái, có thể chứa số và ký tự đặc biệt!";
+        nameerr.style.display = "inline";
+        nameerr.style.color = "red";
+        namehl.style.display = "none";
+        return false;
+    }
+}
+
+    // Kiểm tra mật khẩu
+    function ktraMatkhau() {
+    let mk = document.getElementById("pass").value.trim();
+    let regex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/; // Có số, chữ hoa, ký tự đặc biệt, ít nhất 8 ký tự
+    let mkhl=document.getElementById("pass-hl");
+    let mkerr=document.getElementById("pass-error");
+    if (regex.test(mk)) {
+        mkhl.innerHTML = "✔ Hợp lệ";
+        mkhl.style.display = "inline";
+        mkhl.style.color = "green";
+        mkerr.style.display = "none";
+        return true;
+    } else {
+        mkerr.innerHTML = "Mật khẩu phải chứa ít nhất 1 số, 1 chữ hoa, 1 ký tự đặc biệt và tối thiểu 8 ký tự";
+        mkerr.style.display = "inline";
+        mkerr.style.color = "red";
+        mkhl.style.display = "none";
+        return false;
+    }
+}
+
+    //kiểm tra mật khẩu
+    function ktraLaimatkhau() {
+        let mk = document.getElementById("pass").value; // Mật khẩu ban đầu
+        let mksau = document.getElementById("repass").value; // Mật khẩu nhập lại
+        let remkhl= document.getElementById("repass-hl");
+        let remkerr= document.getElementById("repass-error");
+        if (mk === mksau&&mksau!="") {
+           remkhl.innerHTML = "✔ Hợp lệ";
+           remkhl.style.display = "inline";
+           remkhl.style.color = "green";
+           remkerr.style.display = "none";
+            return true;
+        } else {
+            remkerr.innerHTML = "Mật khẩu không khớp";
+            remkerr.style.display = "inline";
+            remkerr.style.color = "red";
+            remkhl.style.display = "none";
+            return false;
+        }
+    }
+
+    //kiểm tra họ tên
+    function ktraHoten() {
+        let ten = document.getElementById("ten").value;
+        let regex = /^[A-Z][a-z]+(\s[A-Z][a-z]+)+$/;
+        let tenhl=document.getElementById("ten-hl");
+        let tenerr=document.getElementById("ten-error");
+        if (regex.test(ten)&&ten!="") {
+            tenhl.innerHTML = "✔ Hợp lệ";
+            tenhl.style.display = "inline";
+            tenhl.style.color = "green";
+            tenerr.style.display = "none";
+            return true;
+        } else {
+            tenerr.innerHTML = "Họ tên phải viết hoa chữ cái đầu";
+            tenerr.style.display = "inline";
+            tenerr.style.color = "red";
+            tenhl.style.display = "none";
+            return false;
+        }
+    }
+
+    //kiểm tra ngày tháng năm sinh
+    function ktraNS() {
+    let ngaysinh = document.getElementById("ngaysinh").value.trim(); // Lấy giá trị ngày sinh từ input
+    let ngaysinhHl = document.getElementById("ngaysinh-hl");
+    let ngaysinhErr = document.getElementById("ngaysinh-error");
+
+    if (!ngaysinh) {
+        ngaysinhErr.innerHTML = "Vui lòng nhập ngày sinh!";
+        ngaysinhErr.style.display = "inline";
+        ngaysinhErr.style.color = "red";
+        ngaysinhHl.style.display = "none";
+        return false;
+    }
+
+    let birthDate = new Date(ngaysinh);
+    if (isNaN(birthDate.getTime())) { // Kiểm tra ngày hợp lệ
+        ngaysinhErr.innerHTML = "Ngày sinh không hợp lệ!";
+        ngaysinhErr.style.display = "inline";
+        ngaysinhErr.style.color = "red";
+        ngaysinhHl.style.display = "none";
+        return false;
+    }
+
+    let today = new Date();
+    let tuoi = today.getFullYear() - birthDate.getFullYear();
+    let thang = today.getMonth() - birthDate.getMonth();
+    let ngay = today.getDate() - birthDate.getDate();
+
+    if (thang < 0 || (thang === 0 && ngay < 0)) {
+        tuoi--;
+    }
+
+    if (tuoi >= 18) {
+        ngaysinhHl.innerHTML = "✔ Hợp lệ";
+        ngaysinhHl.style.display = "inline";
+        ngaysinhHl.style.color = "green";
+        ngaysinhErr.style.display = "none";
+        return true;
+    } else {
+        ngaysinhErr.innerHTML = "Phải trên hoặc bằng 18 tuổi!";
+        ngaysinhErr.style.display = "inline";
+        ngaysinhErr.style.color = "red";
+        ngaysinhHl.style.display = "none";
+        return false;
+    }
+}
+
+    //kiểm tra giới tính
+    function Ktragioitinh() {
+    let gioiTinh = document.querySelector('input[name="gioitinh"]:checked');
+    let error = document.getElementById("gioitinh-error");
+    let hl = document.getElementById("gioitinh-hl");
+
+    if (!gioiTinh) { // Nếu không có radio nào được chọn
+        error.innerHTML = "Vui lòng chọn giới tính!";
+        error.style.display = "inline";
+        error.style.color = "red";
+        hl.style.display = "none";
+        return false;
+    } else {
+        hl.innerHTML = "✔ Hợp lệ";
+        hl.style.display = "inline";
+        hl.style.color = "green";
+        error.style.display = "none";
+        return true;
+    }
+}
+   
+
+
+    //kiểm tra địa chỉ
+    function ktraDiachi() {
+    let diachi = document.getElementById("dc").value.trim(); // Xóa khoảng trắng đầu/cuối
+    let dcerror = document.getElementById("dc-error");
+    let dchl = document.getElementById("dc-hl");
+    if (diachi === "") {
+        dcerror.innerHTML = "Vui lòng nhập địa chỉ!";
+        dcerror.style.display = "inline";
+        dcerror.style.color = "red";
+        dchl.style.display = "none";
+        return false;
+    } else {
+        dchl.innerHTML = "✔ Hợp lệ";
+        dchl.style.display = "inline";
+        dchl.style.color = "green";
+        dcerror.style.display="none";
+        return true;
+    }
+}
+
+    // kiểm tra số điện thoại
+    function ktraSDT() {
+        let sdt = document.getElementById('sdt').value; // Lấy giá trị số điện
+        let regex = /^0[3-9][0-9]{8}$/; // Định dạng số điện thoại
+        let sdterror = document.getElementById("sdt-error");
+        let sdtl = document.getElementById("sdt-hl");
+        if (regex.test(sdt)) {
+            sdtl.innerHTML = "✔ Hợp lệ";
+            sdtl.style.display = "inline";
+            sdtl.style.color = "green";
+            sdterror.style.display = "none";
+            return true;
+        } else {
+            sdterror.innerHTML = "Số điện thoại phải bắt đầu bằng 03,04,05,06,07,08,09";
+            sdterror.style.display = "inline";
+            sdterror.style.color = "red";
+            sdtl.style.display = "none";
+            return false;
+        }
+    }
+    // kiểm tra email
+    function ktraEmail() {
+        let email = document.getElementById('email').value; // Lấy giá trị email
+        let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        let emailerror = document.getElementById("email-error");
+        let emailhl = document.getElementById("email-hl");
+        if (regex.test(email)) {
+            emailhl.innerHTML = "✔ Hợp lệ";
+            emailhl.style.display = "inline";
+            emailhl.style.color = "green";
+            emailerror.style.display="none";
+            return true;
+        } else {
+            emailerror.innerHTML = "Sai địa chỉ email";
+            emailerror.style.display = "inline";
+            emailerror.style.color = "red";
+            emailhl.style.display = "none";
+            return false;
+        }
+    }
+
+    //Đăng ký
+    function validateForm(event) {
+    event.preventDefault(); // Ngăn form submit nếu có lỗi
+
+    // Lấy thông tin từ form
+    let name = document.getElementById("name").value.trim();
+    let pass = document.getElementById("pass").value.trim();
+
+    // Kiểm tra dữ liệu nhập vào có hợp lệ không
+    if (name === "" || pass === "") {
+        alert("⚠️ Vui lòng nhập đầy đủ thông tin!");
+        return false;
+    }
+
+    // Lưu vào localStorage
+    let user = {
+        name: name,
+        pass: pass
+    };
+
+    localStorage.setItem("userInfo", JSON.stringify(user));
+    alert("🎉 Đăng ký thành công!");
+
+    // Xóa ô input sau khi đăng ký thành công
+    document.getElementById("name").value = "";
+    document.getElementById("pass").value = "";
+
+    return true;
+}
+
+
+        //Kiểm tra đăng nhập
+        function ktraDangNhap(event) {
+    event.preventDefault(); // Ngăn form gửi dữ liệu đi
+
+    // Lấy thông tin nhập vào
+    let nameInput = document.getElementById("namedn").value.trim();
+    let passInput = document.getElementById("passdn").value.trim();
+
+    // Kiểm tra xem có nhập đầy đủ không
+    if (nameInput === "" || passInput === "") {
+        alert("⚠️ Vui lòng nhập đầy đủ thông tin!");
+        return false;
+    }
+
+    // Lấy dữ liệu từ localStorage
+    let userData = localStorage.getItem("userInfo");
+
+    // Kiểm tra nếu không có dữ liệu đăng ký
+    if (!userData) {
+        alert("❌ Không tìm thấy tài khoản. Vui lòng đăng ký!");
+        return false;
+    }
+
+    let user = JSON.parse(userData);
+
+    // Kiểm tra xem có khớp tài khoản không
+    if (user.name === nameInput && user.pass === passInput) {
+        alert("🎉 Đăng nhập thành công!");
+       // 🛑 Đóng modal bằng jQuery
+    $("#mymodal1").modal("hide");
+        return true;
+    } else {
+        alert("❌ Sai tên đăng nhập hoặc mật khẩu!");
+        return false;
+    }
+}
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const productCards = document.querySelectorAll(".card-body h5");
+
+    productCards.forEach((product) => {
+        product.addEventListener("mouseover", () => {
+            product.style.color = "red";
+        });
+
+        product.addEventListener("mouseout", () => {
+            product.style.color = "black"; // Trả lại màu gốc
+        });
+    });
+});
+
+            // banner
+        var myCarousel = new bootstrap.Carousel(document.querySelector('#myCarousel'), {
+            interval: 1000, // Chạy sau mỗi 3 giây
+            wrap: true // Chạy vòng lặp vô hạn
+        });
+
+
+        function viewDetails(name, image, price, description) {
+    // Chuẩn hóa giá (loại bỏ dấu chấm, phẩy nếu có)
+    if (typeof price === "string") {
+        price = parseInt(price.replace(/\./g, "").replace(/,/g, ""), 10);
+    }
+
+    // Mã hóa mô tả sản phẩm để truyền qua URL (tránh lỗi ký tự đặc biệt)
+    const encodedDescription = encodeURIComponent(description);
+
+    // Tạo tham số URL
+    const params = new URLSearchParams();
+    params.set("name", name);
+    params.set("image", image);
+    params.set("price", price);
+    params.set("description", encodedDescription);
+
+    // Lưu vào LocalStorage để đảm bảo dữ liệu không bị lỗi khi mô tả quá dài
+    localStorage.setItem("selectedProduct", JSON.stringify({
+        name,
+        image,
+        price,
+        description
+    }));
+
+    // Chuyển hướng sang trang chi tiết
+    window.location.href = "chitietsanpham.html?" + params.toString();
+}
+
+
+
+    </script>
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <div class="row dau">
+                    <div class="col-3">
+                        <h2 class="chu1">IKITCHEN</h2>
+                        <img id="logo" src="../img/logo.png" alt="logo">
+                    </div>
+    
+                    <div class="col-4">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-search"></i> <!-- Icon tìm kiếm -->
+                            </span>
+                            <input type="text" class="form-control" placeholder="Nhập từ khóa">
+                        </div>
+                    </div>
+                    
+    
+                    <div class="col-5 me-0">
+                        <div class="dangky">
+                        <i class="bi bi-person-fill user"></i> <!-- User đậm -->
+                        <span><input type="button" value="Đăng nhập" class="btn btn text-light dk mb-1 dn" data-bs-toggle="modal" data-bs-target="#mymodal1"></span>
+                        <span>/</span>
+                        <span><input type="button" value="Đăng ký" class="btn btn text-light dk mb-1" data-bs-toggle="modal" data-bs-target="#mymodal2"></span>
+                        <div id="cart-icon" style="position: absolute;">
+                            <i style="position: absolute; left: 360px; bottom: 12px;" class="bi bi-cart-fill"></i>
+                            <span style="position: absolute; left: 380px; bottom: 11px;" id="cart-count">0</span>
+                        </div>
+                        <span><a class="gh" href="giohang.html">Giỏ hàng</a></span>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- modal đăng kí -->
+            <div class="modal modal-custom" id="mymodal2">
+                <div class="modal-dialog modal-lg" style="max-width: 700px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="w-100 text-center text-uppercase text-danger">Đăng kí tài khoản</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+            
+                        <div class="modal-body">
+                            <form id="register-form">
+                                <!-- Tên đăng nhập -->
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Tên đăng nhập:</label>
+                                    <input type="text" id="name" class="form-control" placeholder="Nhập tên đăng nhập" onblur="ktraTaiKhoan()">
+                                    <span id="name-error" class="error text-danger">*</span>
+                                    <span id="name-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Mật khẩu -->
+                                <div class="mb-3">
+                                    <label for="pass" class="form-label">Mật khẩu:</label>
+                                    <input type="password" id="pass" class="form-control" placeholder="Nhập mật khẩu" onblur="ktraMatkhau()">
+                                    <span id="pass-error" class="error text-danger">*</span> 
+                                    <span id="pass-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Nhập lại mật khẩu -->
+                                <div class="mb-3">
+                                    <label for="repass" class="form-label">Nhập lại mật khẩu:</label>
+                                    <input type="password" id="repass" class="form-control" placeholder="Nhập lại mật khẩu" onblur="ktraLaimatkhau()">
+                                    <span id="repass-error" class="error text-danger">*</span>
+                                    <span id="repass-hl" class="hople"></span>
+                                </div>
+            
+                                <h5 class="text-uppercase mt-4 mb-4 text-center text-danger">Thông tin cá nhân</h5>
+            
+                                <!-- Họ và tên -->
+                                <div class="mb-3">
+                                    <label for="ten" class="form-label">Họ và tên:</label>
+                                    <input type="text" id="ten" class="form-control" placeholder="Nhập họ và tên" onblur="ktraHoten()">
+                                    <span id="ten-error" class="error text-danger">* bắt buộc</span>
+                                    <span id="ten-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Ngày sinh -->
+                                <div class="mb-3">
+                                    <label for="ngaysinh" class="form-label">Ngày sinh:</label>
+                                    <input type="date" id="ngaysinh" class="form-control" onblur="ktraNS()">
+                                    <span id="ngaysinh-error" class="error text-danger"></span>
+                                    <span id="ngaysinh-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Giới tính -->
+                                <div class="mb-3">
+                                    <label class="form-label">Giới tính:</label><br>
+                                    <input type="radio" name="gioitinh" id="nam" value="nam" onblur="Ktragioitinh()">
+                                    <label for="nam">Nam</label>
+                                    <input type="radio" name="gioitinh" id="nu" value="nu" onblur="Ktragioitinh()">
+                                    <label for="nu">Nữ</label>
+                                    <span id="gioitinh-error" class="error text-danger"></span>
+                                    <span id="gioitinh-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Địa chỉ -->
+                                <div class="mb-3">
+                                    <label for="dc" class="form-label">Địa chỉ:</label>
+                                    <input type="text" id="dc" class="form-control" placeholder="Nhập địa chỉ" onblur="ktraDiachi()">
+                                    <span id="dc-error" class="error text-danger"></span>
+                                    <span id="dc-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Điện thoại -->
+                                <div class="mb-3">
+                                    <label for="sdt" class="form-label">Điện thoại:</label>
+                                    <input type="text" id="sdt" class="form-control" placeholder="Nhập số điện thoại" onblur="ktraSDT()">
+                                    <span id="sdt-error" class="error text-danger">phải là số</span>
+                                    <span id="sdt-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Email -->
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email:</label>
+                                    <input type="email" id="email" class="form-control" placeholder="Nhập email" onblur="ktraEmail()">
+                                    <span id="email-error" class="error text-danger">nhập đúng địa chỉ mail</span>
+                                    <span id="email-hl" class="hople"></span>
+                                </div>
+                            </form>
+                        </div>
+            
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger w-100" onclick="validateForm(event)">Đăng kí</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- modal đăng nhập -->
+
+                    
+                        <div class="modal modal-custom" id="mymodal1">
+                            <div class="modal-dialog modal-lg" style="max-width: 700px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="w-100 text-center text-uppercase text-danger">Đăng nhập tài khoản</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                        
+                                    <div class="modal-body">
+                                        <form id="register-form">
+                                            <!-- Tên đăng nhập -->
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">Tên đăng nhập:</label>
+                                                <input type="text" id="namedn" class="form-control" placeholder="Nhập tên đăng nhập">
+                                                <span id="name-errordn" class="errordn"></span>
+                                                <span id="name-hldn" class="hopledn"></span>
+                                            </div>
+                        
+                                            <!-- Mật khẩu -->
+                                            <div class="mb-3">
+                                                <label for="pass" class="form-label">Mật khẩu:</label>
+                                                <input type="password" id="passdn" class="form-control" placeholder="Nhập mật khẩu">
+                                                <span id="pass-errordn" class="errordn"></span>
+                                                <span id="pass-hldn" class="hopledn"></span>
+                                            </div>
+                                           
+                                        </form>
+                                    </div>
+                        
+                                    <div class="modal-footer d-flex justify-content-center">
+                                        <button type="button" class="btn btn-danger w-100" onclick="ktraDangNhap(event)">Đăng nhập</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <ul class="nav nav-menu justify-content-center text-uppercase">
+                                <li class="nav-item">
+                                    <a class="nav-link text-light mt-1" href="home.html">Trang chủ</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-light mt-1" data-bs-toggle="dropdown" href="#">Sản phẩm</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item text-light" href="dodien.html">Đồ điện</a></li>
+                                        <li><a class="dropdown-item text-light" href="dodadung.html">Đồ gia dụng</a></li>
+                                        <li><a class="dropdown-item text-light" href="phukien.html">Phụ kiện</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item"><a class="nav-link text-light mt-1" href="#thongtin">Thông tin</a></li>
+                                <li class="nav-item"><a class="nav-link text-light mt-1" href="#lienhe">Liên hệ</a></li>
+                                <li class="nav-item"><a class="nav-link text-light mt-1 me-5" href="#gioithieu">Giới thiệu</a></li>
+                            </ul>                
+                        </div>
+                        
+           <div class="row">
+            <div class="col-3 category-box">
+                <h5 class="category-title text-uppercase">DANH MỤC SẢN PHẨM 📋</h5>
+                <div class="list-group" style="position: sticky; top: 0;">
+                    <a href="#" class="list-group-item list-group-item-action">🗄️Ngăn Kéo Để Đồ</a>
+                    <a href="#" class="list-group-item list-group-item-action">🍚Nồi Cơm Điện</a>
+                    <a href="#" class="list-group-item list-group-item-action">💨Máy Hút Mùi</a>
+                    <a href="#" class="list-group-item list-group-item-action">📦Thùng Gạo</a>
+                    <a href="#" class="list-group-item list-group-item-action">🔥Lò Nướng</a>
+                    <a href="#" class="list-group-item list-group-item-action">❄️Tủ Lạnh</a>
+                    <a href="#" class="list-group-item list-group-item-action">🍽️Kệ Bếp</a>
+                    <a href="#" class="list-group-item list-group-item-action">🍳Chảo</a>
+                    <a href="#" class="list-group-item list-group-item-action">🥘Nồi</a>  
+                </div>
+            </div>
+
+            <div class="col-9">
+            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="../img/banner.jpeg" alt="Banner 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="../img/banner6.webp" alt="Banner 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="../img/banner7.webp" alt="Banner 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="../img/banner8.webp" alt="Banner 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="../img/banner10.webp" alt="Banner 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="../img/banner12.webp" alt="Banner 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="../img/banner13.webp" alt="Banner 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="../img/banner14.png" alt="Banner 3">
+                    </div>
+                </div>
+            
+                <!-- Các nút điều hướng -->
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+            </div>
+           </div>
+            
+
+            <div class="row content mt-5 justify-content-center">
+                    <div class="row">
+                        <h3 class="text-light text-uppercase" style="font-family: 'Times New Roman', Times, serif;">Đồ da dụng</h3>
+            
+                        <div class="col">
+                            <div class="card w-auto">
+                                <div class="card-header" style="height: 240px;"><img src="../img/chao1.png" alt="" class="img-fluid"></div>
+                                <div class="card-body text-dark text-center">
+                                    <h5>Chảo inox chống dính vân đá đáy từ 20 cm Sunhouse IN20M4</h5>
+                                    <p class="text-danger">Giá: 320.000</p>
+                                    <script>
+                                        const moTa1 = "Dùng cho bếp: Bếp từ, Bếp ga, Bếp hồng ngoại\nChất liệu chảo: Thành: inox 201, Đáy: inox 430\nChất liệu sơn chống dính: Whitford\nMức nhiệt chịu được: Chịu nhiệt tối đa 315°C\nĐường kính: 20 cm\nĐộ dày: 0.431 mm\nKhối lượng: 0.676 kg";
+                                    </script>
+                                        <button onclick="viewDetails('Chảo inox chống dính vân đá đáy từ 20 cm Sunhouse IN20M4', '../img/chao1.png','320.000',moTa1)" class="btn btn-danger">Xem Chi Tiết</button>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col">
+                            <div class="card w-auto">
+                                <div class="card-header" style="height: 240px;"><img src="../img/chao2.png" alt="" style="height: 220px;" class="img-fluid" ></div>
+                                <div class="card-body text-dark text-center">
+                                    <h5>Chảo inox nguyên khối sâu đáy từ 26 cm Green Cook GCP245-26IH</h5>
+                                    <p class="text-danger">Giá: 650.000</p>
+                                    <script>
+                                        const moTa2 = "Dùng cho bếp: Bếp từ, Bếp ga, Bếp hồng ngoại\nChất liệu chảo: Inox 304 - nhôm - inox 430\nMức nhiệt chịu được: Chịu nhiệt tối đa 320°C\nĐường kính: 26 cm\nĐộ dày: 2.092 mm\nKhối lượng: 1.13 kg\nThương hiệu của: Việt Nam";
+                                    </script>
+                                    <button onclick="viewDetails('Chảo inox nguyên khối sâu đáy từ 26 cm Green Cook GCP245-26IH', '../img/chao2.png','650.000', moTa2)" class="btn btn-danger">Xem Chi Tiết</button>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col">
+                            <div class="card w-auto">
+                                <div class="card-header" style="height: 240px;"><img src="../img/chao3.png" style="height: 220px;"alt="" class="img-fluid"></div>
+                                <div class="card-body text-dark text-center">
+                                    <h5>Chảo nhôm chống dính vân đá đáy từ 24 cm Elmich Colosseum Y1</h5>
+                                    <p class="text-danger">Giá: 280.000</p>
+                                    <script>
+                                        const moTa3 = "Dùng cho bếp: Bếp từ, Bếp ga, Bếp hồng ngoại\nChất liệu chảo: Thành: nhôm, Đáy: inox 430\nChất liệu sơn chống dính: Whitford\nMức nhiệt chịu được: Chịu nhiệt tối đa 250°C\nĐường kính: 24 cm\nĐộ dày: 2.98 mm\nKhối lượng: 0.7 kg";
+                                    </script>
+                                    <button onclick="viewDetails('Chảo nhôm chống dính vân đá đáy từ 24 cm Elmich Colosseum Y1', '../img/chao3.png','280.000', moTa3)" class="btn btn-danger">Xem Chi Tiết</button>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col">
+                            <div class="card w-auto">
+                                <div class="card-header" style="height: 240px;"><img src="../img/chao4.png" alt="" class="img-fluid"></div>
+                                <div class="card-body text-dark text-center">
+                                    <h5>Chảo nhôm sâu chống dính đáy từ 20cm Supor H23110-SJ20</h5>
+                                    <p class="text-danger">Giá: 279.000</p>
+                                    <script>
+                                        const moTa4 = "Dùng cho bếp: Bếp từ, Bếp ga, Bếp hồng ngoại\nChất liệu chảo: Thành: nhôm, Đáy: inox 430\nChất liệu sơn chống dính: PTFE\nMức nhiệt chịu được: Chịu nhiệt tối đa 400°C\nĐường kính: 20 cm\nĐộ dày: 2.3 mm\nKhối lượng: 0.48 kg";
+                                    </script>
+                                    <button onclick="viewDetails('Chảo nhôm sâu chống dính đáy từ 20cm Supor H23110-SJ20', '../img/chao4.png','279.000', moTa4)" class="btn btn-danger">Xem Chi Tiết</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card w-auto">
+                                <div class="card-header" style="height: 240px;"><img src="../img/chao5.jpg" alt="" class="img-fluid"></div>
+                                <div class="card-body text-dark text-center">
+                                    <h5>Chảo Siêu Bền Đá Đáy Từ SUNHOUSE SBD26M-TTX330</h5>
+                                    <p class="text-danger">Giá: 590.000</p>
+                                    <script>
+                                        const moTa5 = "Công nghệ đúc nguyên khối siêu bền, chống móp méo\n4 lớp chống dính vân đá kháng khuẩn, an toàn cho sức khỏe\nĐường kính: 26 cm\nChiều cao thân: 5,5 cm\nSử dụng được đa dạng các loại bếp\nXuất xứ :Việt Nam";
+                                    </script>
+                                    <button onclick="viewDetails('Chảo Siêu Bền Đá Đáy Từ SUNHOUSE SBD26M-TTX330', '../img/chao5.jpg','590.000', moTa5)" class="btn btn-danger">Xem Chi Tiết</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- hàng 2 -->
+                    <div class="row mt-2">
+                        <div class="col">
+                            <div class="card w-auto">
+                                <div class="card-header" style="height: 240px;"><img src="../img/noi1.png" style="height: 220px;" alt="" class="img-fluid"></div>
+                                <div class="card-body text-dark text-center">
+                                    <h5>Bộ 3 nồi inox 3 đáy nắp kính Elmich Trimax XR EL-3843</h5>
+                                    <p class="text-danger">Giá: 1.919.000</p>
+                                    <script>
+                                        const moTa6 = "Dùng cho bếp: Bếp từ, Bếp gas, Bếp hồng ngoại\nChất liệu nồi: Inox 304, Nhôm, Inox 430\nNắp nồi: Nắp kính (núm inox)\nKích thước: Nồi 16 cm: 16 x 8.5 x 25.5 cm, Nồi 20 cm: 20 x 10 x 30.5 cm, Nồi 24 cm: 24 x 11.5 x 35.2 cm\nĐộ dày: Nồi 16 cm: 1.873 mm, Nồi 20 cm: 1.795 mm, Nồi 24 cm: 1.821 mm\nThương hiệu của: Cộng Hòa Séc\nNơi sản xuất: Việt Nam";
+                                    </script>
+                                    <button onclick="viewDetails('Bộ 3 nồi inox 3 đáy nắp kính Elmich Trimax XR EL-3843', '../img/noi1.png','1.919.000', moTa6)" class="btn btn-danger">Xem Chi Tiết</button>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col">
+                            <div class="card w-auto">
+                                <div class="card-header" style="height: 240px;"><img src="../img/noi2.png" style="height: 220px;" alt="" class="img-fluid"></div>
+                                <div class="card-body text-dark text-center">
+                                    <h5>Bộ 3 nồi inox 3 đáy nắp kính Sunhouse SHG306-Y122</h5>
+                                    <p class="text-danger">Giá: 1.160.000</p>
+                                    <script>
+                                        const moTa7 = "Dùng cho bếp: Bếp từ, Bếp gas, Bếp hồng ngoại\nChất liệu nồi: Thành: inox 201, Đáy: inox 201 - nhôm - inox 430\nNắp nồi: Nắp kính (núm inox)\nKích thước: Nồi 16 cm: 16 x 10 x 26 cm, Nồi 20 cm: 20 x 11.5 x 31 cm, Nồi 24 cm: 24 x 13.5 x 34 cm\nĐộ dày: 0.419 mm\nThương hiệu của: Việt Nam\nNơi sản xuất: Việt Nam";
+                                    </script>
+                                    <button onclick="viewDetails('Bộ 3 nồi inox 3 đáy nắp kính Sunhouse SHG306-Y122', '../img/noi2.png','1.160.000', moTa7)" class="btn btn-danger">Xem Chi Tiết</button>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col">
+                            <div class="card w-auto">
+                                <div class="card-header" style="height: 240px;"><img src="../img/noi3.png" style="height: 220px;" alt="" class="img-fluid"></div>
+                                <div class="card-body text-dark text-center">
+                                    <h5>Bộ 3 nồi inox 5 đáy nắp kính Green Cook GCS232-T1</h5>
+                                    <p class="text-danger">Giá: 1.190.000</p>
+                                    <script>
+                                        const moTa8 = "Dùng cho bếp: Bếp từ, Bếp gas, Bếp hồng ngoại\nChất liệu nồi: Thành: inox 201, Đáy: inox 430\nNắp nồi: Nắp kính\nKích thước: Nồi 16 cm: 16 x 9.7 x 25 cm, Nồi 20 cm: 20 x 12 x 30.2 cm, Nồi 24 cm: 24 x 13.7 x 34.5 cm\nĐộ dày: Nồi 16 cm: 0.400 mm, Nồi 20 cm: 0.467 mm, Nồi 24 cm: 0.470 mm\nThương hiệu của: Việt Nam\nNơi sản xuất: Trung Quốc";
+                                    </script>
+                                    <button onclick="viewDetails('Bộ 3 nồi inox 5 đáy nắp kính Green Cook GCS232-T1', '../img/noi3.png','1.190.000', moTa8)" class="btn btn-danger">Xem Chi Tiết</button>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col">
+                            <div class="card w-auto">
+                                <div class="card-header" style="height: 240px;"><img src="../img/noi4.png" style="height: 220px;" alt="" class="img-fluid"></div>
+                                <div class="card-body text-dark text-center">
+                                    <h5>Bộ nồi quánh inox nắp kính Tefal Duetto Plus G719S674</h5>
+                                    <p class="text-danger">Giá: 2.390.000</p>
+                                    <script>
+                                        const moTa9 = "Dùng cho bếp: Bếp từ, Bếp gas, Bếp hồng ngoại\nChất liệu nồi: Thành: inox 18/10, Đáy: inox 430\nNắp nồi: Nắp kính (núm inox)\nKích thước: Nồi 20 cm: 20 x 10 x 28 cm, Nồi 24 cm: 24 x 11.5 x 32.5 cm, Quánh: 16 x 8 x 16 cm\nĐộ dày: Nồi: 0.73 mm, Quánh: 0.81 mm\nThương hiệu của: Pháp\nNơi sản xuất: Trung Quốc";
+                                    </script>
+                                    <button onclick="viewDetails('Bộ nồi quánh inox nắp kính Tefal Duetto Plus G719S674', '../img/noi4.png','2.390.000', moTa9)" class="btn btn-danger">Xem Chi Tiết</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card w-auto">
+                                <div class="card-header" style="height: 240px;"><img style="height: 220px; width: 220px; margin-left: 10px;" src="../img/noi5.webp" alt="" class="img-fluid"></div>
+                                <div class="card-body text-dark text-center">
+                                    <h5>Bộ Nồi Inox 5 Đáy Cao Cấp SUNHOUSE SHG2025-P90</h5>
+                                    <p class="text-danger">Giá: 2.200.000</p>
+                                    <script>
+                                        const moTa10 = "Đáy 5 lớp bền bỉ: Truyền nhiệt nhanh & Tỏa nhiệt đều\nInox cao cấp - An toàn cho sức khỏe, không han gỉ\nQuai và núm vuông bọc silicon cầm nắm dễ dàng\nKích thước: 16 cm - 20 cm - 24 cm\nVung kính cường lực chống va đập\nSố nồi : 3";
+                                    </script>
+                                    <button onclick="viewDetails('Bộ Nồi Inox 5 Đáy Cao Cấp SUNHOUSE SHG2025-P90', '../img/noi5.webp','2.200.000', moTa10)" class="btn btn-danger">Xem Chi Tiết</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div> 
+
+
+            <div class="row footer" style="font-family: 'Times New Roman', Times, serif;">
+                        <div class="col-5 lienhe ">
+                        <div class="ms-5">
+                        <h4 style="margin-left: 5px;">Liên hệ với chúng tôi</h4>
+                        <p>📍12 Nguyễn Văn Bảo, Phường 1, Quận Gò Vấp, Thành Phố Hồ Chí Minh</p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.8582379826526!2d106.68427047480561!3d10.822158889329412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174deb3ef536f31%3A0x8b7bb8b7c956157b!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2hp4buHcCBUUC5IQ00!5e0!3m2!1svi!2s!4v1743161832514!5m2!1svi!2s" width="350" height="150" style="border:0; " allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <p>📞Hotline : 0345749384 - 0327241110</p>
+                        <p><a style="text-decoration: none; color: black;" href="mailto:📩Email : phamminhthinh2005@gmail.com - nguatroiiale@gmail.com">📩Email : phamminhthinh2005@gmail.com - nguatroiiale@gmail.com</a></p>
+                        <div class="social-icons">
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/share/186GR2feDJ/?mibextid=wwXIfr" target="_blank">
+                              <i class="fab fa-facebook"></i>
+                            </a>
+                          
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/miyn.hinth2?igsh=MWRqcXV4N3R5bWUxZA%3D%3D&utm_source=qr" target="_blank">
+                              <i class="fab fa-instagram"></i>
+                            </a>
+                          
+                            <!-- Zalo -->
+                            <a href="https://zalo.me/0345749384" target="_blank">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" class="zalo-icon mb-2" alt="Zalo">
+                            </a>
+                          </div>
+                    </div>
+                    </div>
+
+                    <div class="col-4 hotro">
+                        <h4 style="margin-left: 15px;">Hỗ trợ khách hàng</h4>
+                        <ul>
+                            <li><a href="chinhsachvaquydinhchung.html">Chính sách & Quy định chung</a></li>
+                            <li><a href="chinhsachbaomat.html">Chính sách bảo mật</a></li>
+                            <li><a href="huongdanmuahang.html">Hướng dẫn mua hàng</a></li>
+                            <li><a href="huongdanthanhtoan.html">Hướng dẫn thanh toán</a></li>
+                            <li><a href="chinhsachgiaohang.html">Chính sách giao hàng</a></li>
+                            <li><a href="chinhsachdoitra.html">Chính sách đổi trả</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-3 lienket">
+                        <h4 style="margin-left: 15px;">Liên kết</h4>
+                        <ul>
+                            <li><a href="home.html">Trang chủ</a></li>
+                            <li><a href="#">Sản phẩm</a></li>
+                            <li><a href="#">Thông tin</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="#">Giới thiệu</a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+        
+</body>
+</html>

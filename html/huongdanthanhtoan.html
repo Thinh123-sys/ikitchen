@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website dụng cụ bếp</title>
+    <link rel="stylesheet" href="../css/style.css">
+      
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <style> 
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container-fluid{
+    height: auto;
+    background-size: cover;
+    background-color: rgb(17, 17, 17);
+}
+
+.dau{
+    height: 100px;
+    position: relative;
+    background-color: rgb(8, 8, 8);
+    color: white;
+}
+
+#logo{
+    height: 90px;
+    width: 90px;
+    top: 10px;
+    position: absolute;
+    left: 60px;
+}
+
+.chu1{
+    height: 80px;
+    margin-left: 150px;
+    margin-top: 35px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.input-group{
+    margin-top: 30px;
+    margin-left: 25px;
+}
+
+.user, .giohang{
+    font-size: 30px;
+}
+
+.dangky{
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+.dk{
+    margin-right: 1px;
+}
+
+.dn, .dk ,.gh{
+    text-decoration: none;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.nav-menu{
+    background-color: #e21818;
+    height: 50px;
+}
+
+.dropdown-menu{
+    background-color: #e21818;
+}
+
+.dropdown-item:hover{
+    color: white;
+    background-color: rgb(31, 30, 31);
+}
+
+.nav-item:hover{
+    background-color: rgb(31, 30, 31);
+}
+
+/* Định dạng submenu */
+.dropdown-submenu {
+position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+top: 0;
+left: 100%;
+margin-top: -1px;
+display: none;
+position: absolute;
+}
+
+/* Hiển thị menu cấp 3 khi hover */
+.dropdown-submenu:hover .dropdown-menu {
+display: block;
+}
+
+.content{
+    height: 700px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.box-content{
+    height: 650px;
+    width: 850px;
+    background-color: #fff;
+    padding-top: 10px;
+}
+
+.footer{
+    height: 230px;
+    background-color: #fff;
+    padding-top: 20px;
+}
+
+.hotro ul li a ,.lienket  ul li a{
+    text-decoration: none;
+    color: black;
+   
+}
+
+.hotro ul li a:hover ,.lienket  ul li a:hover{
+    color: #e21818;
+}
+
+.hotro, .lienket{
+    line-height: 30px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    font-size: 30px;
+    text-decoration: none;
+  }
+
+  .fa-facebook {
+    color: #1877F2;
+  }
+
+  .fa-instagram {
+    color: #E4405F;
+  }
+
+  .zalo-icon {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+  }
+        </style>
+
+        <script>
+        var myCarousel = new bootstrap.Carousel(document.querySelector('#myCarousel'), {
+            interval: 1000, // Chạy sau mỗi 3 giây
+            wrap: true // Chạy vòng lặp vô hạn
+        });
+    </script>
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <div class="row dau">
+                    <div class="col-3">
+                        <h2 class="chu1">IKITCHEN</h2>
+                        <img id="logo" src="../img/logo.png" alt="logo">
+                    </div>
+    
+                    <div class="col-4">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-search"></i> <!-- Icon tìm kiếm -->
+                            </span>
+                            <input type="text" class="form-control" placeholder="Nhập từ khóa">
+                        </div>
+                    </div>
+                    
+    
+                    <div class="col-5 me-0">
+                        <div class="dangky">
+                        <i class="bi bi-person-fill user"></i> <!-- User đậm -->
+                        <span><input type="button" value="Đăng nhập" class="btn btn text-light dk mb-1 dn" data-bs-toggle="modal" data-bs-target="#mymodal1"></span>
+                        <span>/</span>
+                        <span><input type="button" value="Đăng ký" class="btn btn text-light dk mb-1" data-bs-toggle="modal" data-bs-target="#mymodal2"></span>
+                        <div id="cart-icon" style="position: absolute;">
+                            <i style="position: absolute; left: 360px; bottom: 12px;" class="bi bi-cart-fill"></i>
+                            <span style="position: absolute; left: 380px; bottom: 11px;" id="cart-count">0</span>
+                        </div>
+                        <span><a class="gh" href="giohang.html">Giỏ hàng</a></span>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="row">
+                <ul class="nav nav-menu justify-content-center text-uppercase">
+                    <li class="nav-item">
+                        <a class="nav-link text-light mt-1" href="home.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light mt-1" data-bs-toggle="dropdown" href="#">Sản phẩm</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item text-light" href="dodien.html">Thiết bị điện tử</a></li>
+                            <li><a class="dropdown-item text-light" href="dodadung.html">Đồ gia dụng</a></li>
+                            <li><a class="dropdown-item text-light" href="phukien.html">Phụ kiện</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-light mt-1" href="#thongtin">Thông tin</a></li>
+                    <li class="nav-item"><a class="nav-link text-light mt-1" href="#lienhe">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link text-light mt-1 me-5" href="#gioithieu">Giới thiệu</a></li>
+                </ul>                
+            </div>
+
+            <div class="row content mt-5 justify-content-center">
+                    <div class="box-content">
+                        <h4 style="font-weight: 600;">HƯỚNG DẪN THANH TOÁN</h4>
+                        <p>Chúng tôi cung cấp nhiều phương thức thanh toán linh hoạt nhằm giúp khách hàng hoàn tất giao dịch một cách dễ dàng và an toàn.</p>
+                        <h5 style="font-weight: 600;">I. CÁC PHƯƠNG THỨC THANH TOÁN</h5>
+                        <ul>
+                            <li>Thanh toán khi nhận hàng (COD).</li>
+                            <p style="text-indent: 20px; margin-bottom: 5px;">- Khách hàng thanh toán trực tiếp cho nhân viên giao hàng sau khi nhận sản phẩm.</p>
+                            <p style="text-indent: 20px; margin-bottom: 5px;">- Hình thức này phù hợp với những khách hàng muốn kiểm tra hàng trước khi thanh toán.</p>
+                            <li>Chuyển khoản ngân hàng</li>
+                            <p style="text-indent: 20px; margin-bottom: 5px;">- Sau khi đặt hàng, khách hàng thực hiện chuyển khoản theo thông tin tài khoản do chúng tôi cung cấp.</p>
+                            <p style="text-indent: 20px; margin-bottom: 5px;">- Nội dung chuyển khoản cần ghi rõ mã đơn hàng + họ tên để xác nhận nhanh chóng.</p>
+                            <p style="text-indent: 20px; margin-bottom: 5px;">- Sau khi thanh toán, khách hàng sẽ nhận được email xác nhận từ hệ thống.</p>
+                            <li>Thanh toán qua ví điện tử</li>
+                            <p style="text-indent: 20px; margin-bottom: 5px;">- Hỗ trợ thanh toán qua MoMo, ZaloPay, VNPay.</p>
+                            <p style="text-indent: 20px; margin-bottom: 5px;">- Khách hàng chọn ví điện tử khi thanh toán và thực hiện quét mã QR để hoàn tất giao dịch.</p>
+                            <p style="text-indent: 20px; margin-bottom: 5px;">- Hệ thống sẽ tự động xác nhận đơn hàng sau khi thanh toán thành công.</p>
+                        </ul>
+                        <h5 style="font-weight: 600;">II.LƯU Ý KHI THANH TOÁN</h5>
+                        <ul>
+                            <li>Đối với chuyển khoản ngân hàng, đơn hàng sẽ được xử lý sau khi nhận được thanh toán.</li>
+                            <li>Nếu gặp sự cố khi thanh toán qua ví điện tử, khách hàng vui lòng liên hệ ngay với bộ phận hỗ trợ để được xử lý.</li>
+                        </ul>                          
+                            <p style="margin-bottom: 5px;">Mọi yêu cầu liên quan đến việc thanh toán, khách hàng có thể liên hệ với chúng tôi qua:</p>
+                            <p style="margin-bottom: 5px;">📞Hotline : 0345749384 - 0327241110</p>
+                        <p><a style="text-decoration: none; color: black; margin-bottom: 5px;" href="mailto:📩Email : phamminhthinh2005@gmail.com - nguatroiiale@gmail.com">📩Email : phamminhthinh2005@gmail.com - nguatroiiale@gmail.com</a></p>
+                    </div>
+            </div>
+
+
+            <!-- modal đăng kí -->
+            <div class="modal modal-custom" id="mymodal2">
+                <div class="modal-dialog modal-lg" style="max-width: 700px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="w-100 text-center text-uppercase text-danger">Đăng kí tài khoản</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+            
+                        <div class="modal-body">
+                            <form id="register-form">
+                                <!-- Tên đăng nhập -->
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Tên đăng nhập:</label>
+                                    <input type="text" id="name" class="form-control" placeholder="Nhập tên đăng nhập" onblur="ktraTaiKhoan()">
+                                    <span id="name-error" class="error text-danger">*</span>
+                                    <span id="name-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Mật khẩu -->
+                                <div class="mb-3">
+                                    <label for="pass" class="form-label">Mật khẩu:</label>
+                                    <input type="password" id="pass" class="form-control" placeholder="Nhập mật khẩu" onblur="ktraMatkhau()">
+                                    <span id="pass-error" class="error text-danger">*</span> 
+                                    <span id="pass-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Nhập lại mật khẩu -->
+                                <div class="mb-3">
+                                    <label for="repass" class="form-label">Nhập lại mật khẩu:</label>
+                                    <input type="password" id="repass" class="form-control" placeholder="Nhập lại mật khẩu" onblur="ktraLaimatkhau()">
+                                    <span id="repass-error" class="error text-danger">*</span>
+                                    <span id="repass-hl" class="hople"></span>
+                                </div>
+            
+                                <h5 class="text-uppercase mt-4 mb-4 text-center text-danger">Thông tin cá nhân</h5>
+            
+                                <!-- Họ và tên -->
+                                <div class="mb-3">
+                                    <label for="ten" class="form-label">Họ và tên:</label>
+                                    <input type="text" id="ten" class="form-control" placeholder="Nhập họ và tên" onblur="ktraHoten()">
+                                    <span id="ten-error" class="error text-danger">* bắt buộc</span>
+                                    <span id="ten-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Ngày sinh -->
+                                <div class="mb-3">
+                                    <label for="ngaysinh" class="form-label">Ngày sinh:</label>
+                                    <input type="date" id="ngaysinh" class="form-control" onblur="ktraNS()">
+                                    <span id="ngaysinh-error" class="error text-danger"></span>
+                                    <span id="ngaysinh-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Giới tính -->
+                                <div class="mb-3">
+                                    <label class="form-label">Giới tính:</label><br>
+                                    <input type="radio" name="gioitinh" id="nam" value="nam" onblur="Ktragioitinh()">
+                                    <label for="nam">Nam</label>
+                                    <input type="radio" name="gioitinh" id="nu" value="nu" onblur="Ktragioitinh()">
+                                    <label for="nu">Nữ</label>
+                                    <span id="gioitinh-error" class="error text-danger"></span>
+                                    <span id="gioitinh-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Địa chỉ -->
+                                <div class="mb-3">
+                                    <label for="dc" class="form-label">Địa chỉ:</label>
+                                    <input type="text" id="dc" class="form-control" placeholder="Nhập địa chỉ" onblur="ktraDiachi()">
+                                    <span id="dc-error" class="error text-danger"></span>
+                                    <span id="dc-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Điện thoại -->
+                                <div class="mb-3">
+                                    <label for="sdt" class="form-label">Điện thoại:</label>
+                                    <input type="text" id="sdt" class="form-control" placeholder="Nhập số điện thoại" onblur="ktraSDT()">
+                                    <span id="sdt-error" class="error text-danger">phải là số</span>
+                                    <span id="sdt-hl" class="hople"></span>
+                                </div>
+            
+                                <!-- Email -->
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email:</label>
+                                    <input type="email" id="email" class="form-control" placeholder="Nhập email" onblur="ktraEmail()">
+                                    <span id="email-error" class="error text-danger">nhập đúng địa chỉ mail</span>
+                                    <span id="email-hl" class="hople"></span>
+                                </div>
+                            </form>
+                        </div>
+            
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger w-100" onclick="validateForm(event)">Đăng kí</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- modal đăng nhập -->
+
+                        <div class="modal modal-custom" id="mymodal1">
+                            <div class="modal-dialog modal-lg" style="max-width: 700px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="w-100 text-center text-uppercase text-danger">Đăng nhập tài khoản</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                        
+                                    <div class="modal-body">
+                                        <form id="register-form">
+                                            <!-- Tên đăng nhập -->
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">Tên đăng nhập:</label>
+                                                <input type="text" id="namedn" class="form-control" placeholder="Nhập tên đăng nhập">
+                                                <span id="name-errordn" class="errordn"></span>
+                                                <span id="name-hldn" class="hopledn"></span>
+                                            </div>
+                        
+                                            <!-- Mật khẩu -->
+                                            <div class="mb-3">
+                                                <label for="pass" class="form-label">Mật khẩu:</label>
+                                                <input type="password" id="passdn" class="form-control" placeholder="Nhập mật khẩu">
+                                                <span id="pass-errordn" class="errordn"></span>
+                                                <span id="pass-hldn" class="hopledn"></span>
+                                            </div>
+                                           
+                                        </form>
+                                    </div>
+                        
+                                    <div class="modal-footer d-flex justify-content-center">
+                                        <button type="button" class="btn btn-danger w-100" onclick="ktraDangNhap(event)">Đăng nhập</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            <div class="row footer" style="font-family: 'Times New Roman', Times, serif;">
+                        <div class="col-5 lienhe ">
+                        <div class="ms-5">
+                        <h4 style="margin-left: 5px;">Liên hệ với chúng tôi</h4>
+                        <p>📍12 Nguyễn Văn Bảo, Phường 1, Quận Gò Vấp, Thành Phố Hồ Chí Minh</p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.8582379826526!2d106.68427047480561!3d10.822158889329412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174deb3ef536f31%3A0x8b7bb8b7c956157b!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2hp4buHcCBUUC5IQ00!5e0!3m2!1svi!2s!4v1743161832514!5m2!1svi!2s" width="350" height="150" style="border:0; " allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <p>📞Hotline : 0345749384 - 0327241110</p>
+                        <p><a style="text-decoration: none; color: black;" href="mailto:📩Email : phamminhthinh2005@gmail.com - nguatroiiale@gmail.com">📩Email : phamminhthinh2005@gmail.com - nguatroiiale@gmail.com</a></p>
+                        <div class="social-icons">
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/share/186GR2feDJ/?mibextid=wwXIfr" target="_blank">
+                              <i class="fab fa-facebook"></i>
+                            </a>
+                          
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/miyn.hinth2?igsh=MWRqcXV4N3R5bWUxZA%3D%3D&utm_source=qr" target="_blank">
+                              <i class="fab fa-instagram"></i>
+                            </a>
+                          
+                            <!-- Zalo -->
+                            <a href="https://zalo.me/0345749384" target="_blank">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" class="zalo-icon mb-2" alt="Zalo">
+                            </a>
+                          </div>
+                    </div>
+                    </div>
+
+                    <div class="col-4 hotro">
+                        <h4 style="margin-left: 15px;">Hỗ trợ khách hàng</h4>
+                        <ul>
+                            <li><a href="chinhsachvaquydinhchung.html">Chính sách & Quy định chung</a></li>
+                            <li><a href="chinhsachbaomat.html">Chính sách bảo mật</a></li>
+                            <li><a href="huongdanmuahang.html">Hướng dẫn mua hàng</a></li>
+                            <li><a href="huongdanthanhtoan.html">Hướng dẫn thanh toán</a></li>
+                            <li><a href="chinhsachgiaohang.html">Chính sách giao hàng</a></li>
+                            <li><a href="chinhsachdoitra.html">Chính sách đổi trả</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-3 lienket">
+                        <h4 style="margin-left: 15px;">Liên kết</h4>
+                        <ul>
+                            <li><a href="#">Trang chủ</a></li>
+                            <li><a href="#">Sản phẩm</a></li>
+                            <li><a href="#">Thông tin</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="#">Giới thiệu</a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+
+</body>
+</html>

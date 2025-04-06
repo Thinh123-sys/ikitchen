@@ -1,0 +1,146 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container-fluid{
+    height: 1800px;
+    background-size: cover;
+    background-color: rgb(17, 17, 17);
+}
+
+.dau{
+    height: 100px;
+    position: relative;
+    background-color: rgb(8, 8, 8);
+    color: white;
+}
+
+#logo{
+    height: 90px;
+    width: 90px;
+    top: 10px;
+    position: absolute;
+    left: 60px;
+}
+
+.chu1{
+    height: 80px;
+    margin-left: 150px;
+    margin-top: 35px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.input-group{
+    margin-top: 30px;
+    margin-left: 25px;
+}
+
+.user, .giohang{
+    font-size: 30px;
+}
+
+.dangky{
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+.dk{
+    margin-right: 40px;
+}
+
+.dn, .dk ,.gh{
+    text-decoration: none;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.nav-menu{
+    background-color: #e21818;
+    height: 50px;
+}
+
+.dropdown-menu{
+    background-color: #e21818;
+}
+
+.dropdown-item:hover{
+    color: white;
+    background-color: rgb(31, 30, 31);
+}
+
+.nav-item:hover{
+    background-color: rgb(31, 30, 31);
+}
+
+/* Định dạng submenu */
+.dropdown-submenu {
+position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+top: 0;
+left: 100%;
+margin-top: -1px;
+display: none;
+position: absolute;
+}
+
+/* Hiển thị menu cấp 3 khi hover */
+.dropdown-submenu:hover .dropdown-menu {
+display: block;
+}
+
+.content{
+    height: 1000px;
+}
+
+/* banner */
+#myCarousel {
+width: 1118px; 
+height: 100%;
+overflow: hidden;
+}
+
+.category-box {
+background-color: #fff;
+padding: 15px;
+border-radius: 8px;
+box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.category-title {
+font-size: 18px;
+font-weight: bold;
+text-align: center;
+margin-bottom: 10px;
+}
+
+.list-group-item {
+font-size: 16px;
+font-weight: 500;
+}
+
+.list-group-item:hover {
+background-color: #ff6f61; /* Màu nổi bật khi hover */
+color: white;
+}
+
+.footer{
+    height: 230px;
+    background-color: #fff;
+}
+
+.hotro ul li a ,.lienket  ul li a{
+    text-decoration: none;
+    color: black;
+   
+}
+
+.hotro ul li a:hover ,.lienket  ul li a:hover{
+    color: #e21818;
+}
+
+.hotro, .lienket{
+    line-height: 30px;
+}

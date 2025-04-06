@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container-fluid{
+            height: auto;
+            background-size: cover;
+            background-color: rgb(245, 239, 239);
+        }
+
+        .dau{
+            height: 100px;
+            position: relative;
+            background-color: rgb(8, 8, 8);
+            color: white;
+        }
+
+        #logo{
+            height: 90px;
+            width: 90px;
+            top: 10px;
+            position: absolute;
+            left: 60px;
+        }
+
+        .chu1{
+            height: 80px;
+            margin-left: 150px;
+            margin-top: 35px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .input-group{
+            margin-top: 30px;
+            margin-left: 25px;
+        }
+
+        .user, .giohang{
+            font-size: 30px;
+        }
+
+        .dangky{
+            margin-left: 100px;
+            margin-top: 20px;
+        }
+
+        .dk{
+            margin-right: 10px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+
+        .dn, .dk ,.gh{
+            text-decoration: none;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .nav-menu{
+            background-color: #e21818;
+            height: 50px;
+        }
+
+        .dropdown-menu{
+            background-color: #e21818;
+        }
+
+        .dropdown-item:hover{
+            color: white;
+            background-color: rgb(31, 30, 31);
+        }
+
+        .dk {
+        transition: color 0.3s ease-in-out;
+        }
+
+        .dk:hover {
+        color: red !important;
+        }
+
+        .gh{
+            transition: color 0.3s ease-in-out;
+        }
+
+        .gh:hover{
+            color: red !important;
+        }
+
+        .nav-item:hover{
+            background-color: rgb(31, 30, 31);
+        }
+
+        /* Định dạng submenu */
+        .dropdown-submenu {
+        position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -1px;
+        display: none;
+        position: absolute;
+        }
+
+        /* Hiển thị menu cấp 3 khi hover */
+        .dropdown-submenu:hover .dropdown-menu {
+        display: block;
+        }
+
+        .content{
+            height: 500px;
+        }
+
+        .card-header {
+        overflow: hidden;
+        }
+
+        .footer{
+            height: 230px;
+            background-color: #fff;
+            padding-top: 20px;
+        }
+
+        .hotro ul li a ,.lienket  ul li a{
+            text-decoration: none;
+            color: black;
+           
+        }
+
+        .hotro ul li a:hover ,.lienket  ul li a:hover{
+            color: #e21818;
+        }
+
+        .hotro, .lienket{
+            line-height: 30px;
+        }
+
+        #btnMuaHang {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    }
+
+    #btnMuaHang:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 75, 43, 0.8);
+    }
+
+    .social-icons a {
+    margin: 0 10px;
+    font-size: 30px;
+    text-decoration: none;
+  }
+
+  .fa-facebook {
+    color: #1877F2;
+  }
+
+  .fa-instagram {
+    color: #E4405F;
+  }
+
+  .zalo-icon {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+  }
+
+
+        </style>
+
+        <script>
+        //tên đăng nhập
+        // Kiểm tra tên đăng nhập
+function ktraTaiKhoan() {
+    let name = document.getElementById("name").value.trim();
+    let regex = /^[a-zA-Z][\sa-zA-Z0-9!@#$%^&*()]*$/;
+    let namehl=document.getElementById("name-hl");
+    let nameerr=document.getElementById("name-error");
+    if (regex.test(name)) {
+        namehl.innerHTML = "✔ Hợp lệ";
+        namehl.style.display = "inline";
+        namehl.style.color = "green";
+        nameerr.style.display = "none";
+        return true;
+    } else {
+        nameerr.innerHTML = "Tên đăng nhập phải bắt đầu bằng chữ cái, có thể chứa số và ký tự đặc biệt!";
+        nameerr.style.display = "inline";
+        nameerr.style.color = "red";
+        namehl.style.display = "none";
+        return false;
+    }
+}
+
+    // Kiểm tra mật khẩu
+    function ktraMatkhau() {
+    let mk = document.getElementById("pass").value.trim();
+    let regex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/; // Có số, chữ hoa, ký tự đặc biệt, ít nhất 8 ký tự
+    let mkhl=document.getElementById("pass-hl");
+    let mkerr=document.getElementById("pass-error");
+    if (regex.test(mk)) {
+        mkhl.innerHTML = "✔ Hợp lệ";
+        mkhl.style.display = "inline";
+        mkhl.style.color = "green";
+        mkerr.style.display = "none";
+        return true;
+    } else {
+        mkerr.innerHTML = "Mật khẩu phải chứa ít nhất 1 số, 1 chữ hoa, 1 ký tự đặc biệt và tối thiểu 8 ký tự";
+        mkerr.style.display = "inline";
+        mkerr.style.color = "red";
+        mkhl.style.display = "none";
+        return false;
+    }
+}
+
+    //kiểm tra mật khẩu
+    function ktraLaimatkhau() {
+        let mk = document.getElementById("pass").value; // Mật khẩu ban đầu
+        let mksau = document.getElementById("repass").value; // Mật khẩu nhập lại
+        let remkhl= document.getElementById("repass-hl");
+        let remkerr= document.getElementById("repass-error");
+        if (mk === mksau&&mksau!="") {
+           remkhl.innerHTML = "✔ Hợp lệ";
+           remkhl.style.display = "inline";
+           remkhl.style.color = "green";
+           remkerr.style.display = "none";
+            return true;
+        } else {
+            remkerr.innerHTML = "Mật khẩu không khớp";
+            remkerr.style.display = "inline";
+            remkerr.style.color = "red";
+            remkhl.style.display = "none";
+            return false;
+        }
+    }
+
+    //kiểm tra họ tên
+    function ktraHoten() {
+        let ten = document.getElementById("ten").value;
+        let regex = /^[A-Z][a-z]+(\s[A-Z][a-z]+)+$/;
+        let tenhl=document.getElementById("ten-hl");
+        let tenerr=document.getElementById("ten-error");
+        if (regex.test(ten)&&ten!="") {
+            tenhl.innerHTML = "✔ Hợp lệ";
+            tenhl.style.display = "inline";
+            tenhl.style.color = "green";
+            tenerr.style.display = "none";
+            return true;
+        } else {
+            tenerr.innerHTML = "Họ tên phải viết hoa chữ cái đầu";
+            tenerr.style.display = "inline";
+            tenerr.style.color = "red";
+            tenhl.style.display = "none";
+            return false;
+        }
+    }
+
+    //kiểm tra ngày tháng năm sinh
+    function ktraNS() {
+    let ngaysinh = document.getElementById("ngaysinh").value.trim(); // Lấy giá trị ngày sinh từ input
+    let ngaysinhHl = document.getElementById("ngaysinh-hl");
+    let ngaysinhErr = document.getElementById("ngaysinh-error");
+
+    if (!ngaysinh) {
+        ngaysinhErr.innerHTML = "Vui lòng nhập ngày sinh!";
+        ngaysinhErr.style.display = "inline";
+        ngaysinhErr.style.color = "red";
+        ngaysinhHl.style.display = "none";
+        return false;
+    }
+
+    let birthDate = new Date(ngaysinh);
+    if (isNaN(birthDate.getTime())) { // Kiểm tra ngày hợp lệ
+        ngaysinhErr.innerHTML = "Ngày sinh không hợp lệ!";
+        ngaysinhErr.style.display = "inline";
+        ngaysinhErr.style.color = "red";
+        ngaysinhHl.style.display = "none";
+        return false;
+    }
+
+    let today = new Date();
+    let tuoi = today.getFullYear() - birthDate.getFullYear();
+    let thang = today.getMonth() - birthDate.getMonth();
+    let ngay = today.getDate() - birthDate.getDate();
+
+    if (thang < 0 || (thang === 0 && ngay < 0)) {
+        tuoi--;
+    }
+
+    if (tuoi >= 18) {
+        ngaysinhHl.innerHTML = "✔ Hợp lệ";
+        ngaysinhHl.style.display = "inline";
+        ngaysinhHl.style.color = "green";
+        ngaysinhErr.style.display = "none";
+        return true;
+    } else {
+        ngaysinhErr.innerHTML = "Phải trên hoặc bằng 18 tuổi!";
+        ngaysinhErr.style.display = "inline";
+        ngaysinhErr.style.color = "red";
+        ngaysinhHl.style.display = "none";
+        return false;
+    }
+}
+
+    //kiểm tra giới tính
+    function Ktragioitinh() {
+    let gioiTinh = document.querySelector('input[name="gioitinh"]:checked');
+    let error = document.getElementById("gioitinh-error");
+    let hl = document.getElementById("gioitinh-hl");
+
+    if (!gioiTinh) { // Nếu không có radio nào được chọn
+        error.innerHTML = "Vui lòng chọn giới tính!";
+        error.style.display = "inline";
+        error.style.color = "red";
+        hl.style.display = "none";
+        return false;
+    } else {
+        hl.innerHTML = "✔ Hợp lệ";
+        hl.style.display = "inline";
+        hl.style.color = "green";
+        error.style.display = "none";
+        return true;
+    }
+}
+   
+
+
+    //kiểm tra địa chỉ
+    function ktraDiachi() {
+    let diachi = document.getElementById("dc").value.trim(); // Xóa khoảng trắng đầu/cuối
+    let dcerror = document.getElementById("dc-error");
+    let dchl = document.getElementById("dc-hl");
+    if (diachi === "") {
+        dcerror.innerHTML = "Vui lòng nhập địa chỉ!";
+        dcerror.style.display = "inline";
+        dcerror.style.color = "red";
+        dchl.style.display = "none";
+        return false;
+    } else {
+        dchl.innerHTML = "✔ Hợp lệ";
+        dchl.style.display = "inline";
+        dchl.style.color = "green";
+        dcerror.style.display="none";
+        return true;
+    }
+}
+
+    // kiểm tra số điện thoại
+    function ktraSDT() {
+        let sdt = document.getElementById('sdt').value; // Lấy giá trị số điện
+        let regex = /^0[3-9][0-9]{8}$/; // Định dạng số điện thoại
+        let sdterror = document.getElementById("sdt-error");
+        let sdtl = document.getElementById("sdt-hl");
+        if (regex.test(sdt)) {
+            sdtl.innerHTML = "✔ Hợp lệ";
+            sdtl.style.display = "inline";
+            sdtl.style.color = "green";
+            sdterror.style.display = "none";
+            return true;
+        } else {
+            sdterror.innerHTML = "Số điện thoại phải bắt đầu bằng 03,04,05,06,07,08,09";
+            sdterror.style.display = "inline";
+            sdterror.style.color = "red";
+            sdtl.style.display = "none";
+            return false;
+        }
+    }
+    // kiểm tra email
+    function ktraEmail() {
+        let email = document.getElementById('email').value; // Lấy giá trị email
+        let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        let emailerror = document.getElementById("email-error");
+        let emailhl = document.getElementById("email-hl");
+        if (regex.test(email)) {
+            emailhl.innerHTML = "✔ Hợp lệ";
+            emailhl.style.display = "inline";
+            emailhl.style.color = "green";
+            emailerror.style.display="none";
+            return true;
+        } else {
+            emailerror.innerHTML = "Sai địa chỉ email";
+            emailerror.style.display = "inline";
+            emailerror.style.color = "red";
+            emailhl.style.display = "none";
+            return false;
+        }
+    }
+
+    //Đăng ký
+    function validateForm(event) {
+    event.preventDefault(); // Ngăn form submit nếu có lỗi
+
+    // Lấy thông tin từ form
+    let name = document.getElementById("name").value.trim();
+    let pass = document.getElementById("pass").value.trim();
+
+    // Kiểm tra dữ liệu nhập vào có hợp lệ không
+    if (name === "" || pass === "") {
+        alert("⚠️ Vui lòng nhập đầy đủ thông tin!");
+        return false;
+    }
+
+    // Lưu vào localStorage
+    let user = {
+        name: name,
+        pass: pass
+    };
+
+    localStorage.setItem("userInfo", JSON.stringify(user));
+    alert("🎉 Đăng ký thành công!");
+
+    // Xóa ô input sau khi đăng ký thành công
+    document.getElementById("name").value = "";
+    document.getElementById("pass").value = "";
+
+    return true;
+}
+
+
+        //Kiểm tra đăng nhập
+        function ktraDangNhap(event) {
+    event.preventDefault(); // Ngăn form gửi dữ liệu đi
+
+    // Lấy thông tin nhập vào
+    let nameInput = document.getElementById("namedn").value.trim();
+    let passInput = document.getElementById("passdn").value.trim();
+
+    // Kiểm tra xem có nhập đầy đủ không
+    if (nameInput === "" || passInput === "") {
+        alert("⚠️ Vui lòng nhập đầy đủ thông tin!");
+        return false;
+    }
+
+    // Lấy dữ liệu từ localStorage
+    let userData = localStorage.getItem("userInfo");
+
+    // Kiểm tra nếu không có dữ liệu đăng ký
+    if (!userData) {
+        alert("❌ Không tìm thấy tài khoản. Vui lòng đăng ký!");
+        return false;
+    }
+
+    let user = JSON.parse(userData);
+
+    // Kiểm tra xem có khớp tài khoản không
+    if (user.name === nameInput && user.pass === passInput) {
+        alert("🎉 Đăng nhập thành công!");
+       // 🛑 Đóng modal bằng jQuery
+    $("#mymodal1").modal("hide");
+        return true;
+    } else {
+        alert("❌ Sai tên đăng nhập hoặc mật khẩu!");
+        return false;
+    }
+}
+
+
+
+            // banner
+        var myCarousel = new bootstrap.Carousel(document.querySelector('#myCarousel'), {
+            interval: 1000, // Chạy sau mỗi 3 giây
+            wrap: true // Chạy vòng lặp vô hạn
+        });
+    </script>
+
+
+
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="row dau">
+                <div class="col-3">
+                    <h2 class="chu1">IKITCHEN</h2>
+                    <img id="logo" src="../img/logo.png" alt="logo">
+                </div>
+
+                <div class="col-4">
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-search"></i> <!-- Icon tìm kiếm -->
+                        </span>
+                        <input type="text" class="form-control" placeholder="Nhập từ khóa">
+                    </div>
+                </div>
+                
+
+                <div class="col-5 me-0">
+                    <div class="dangky">
+                    <i class="bi bi-person-fill user"></i> <!-- User đậm -->
+                    <span><input type="button" value="Đăng nhập" class="btn btn text-light dk mb-1 dn" data-bs-toggle="modal" data-bs-target="#mymodal1"></span>
+                    <span>/</span>
+                    <span><input type="button" value="Đăng ký" class="btn btn text-light dk mb-1" data-bs-toggle="modal" data-bs-target="#mymodal2"></span>
+                    <div id="cart-icon" style="position: absolute;">
+                        <i style="position: absolute; left: 360px; bottom: 12px;" class="bi bi-cart-fill"></i>
+                        <span style="position: absolute; left: 380px; bottom: 11px;" id="cart-count">0</span>
+                    </div>
+                    <span><a class="gh" href="giohang.html">Giỏ hàng</a></span>
+                    </div>
+                </div>
+            </div>
+
+        <!-- modal đăng kí -->
+        <div class="modal modal-custom" id="mymodal2">
+            <div class="modal-dialog modal-lg" style="max-width: 700px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="w-100 text-center text-uppercase text-danger">Đăng kí tài khoản</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+        
+                    <div class="modal-body">
+                        <form id="register-form">
+                            <!-- Tên đăng nhập -->
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Tên đăng nhập:</label>
+                                <input type="text" id="name" class="form-control" placeholder="Nhập tên đăng nhập" onblur="ktraTaiKhoan()">
+                                <span id="name-error" class="error text-danger">*</span>
+                                <span id="name-hl" class="hople"></span>
+                            </div>
+        
+                            <!-- Mật khẩu -->
+                            <div class="mb-3">
+                                <label for="pass" class="form-label">Mật khẩu:</label>
+                                <input type="password" id="pass" class="form-control" placeholder="Nhập mật khẩu" onblur="ktraMatkhau()">
+                                <span id="pass-error" class="error text-danger">*</span> 
+                                <span id="pass-hl" class="hople"></span>
+                            </div>
+        
+                            <!-- Nhập lại mật khẩu -->
+                            <div class="mb-3">
+                                <label for="repass" class="form-label">Nhập lại mật khẩu:</label>
+                                <input type="password" id="repass" class="form-control" placeholder="Nhập lại mật khẩu" onblur="ktraLaimatkhau()">
+                                <span id="repass-error" class="error text-danger">*</span>
+                                <span id="repass-hl" class="hople"></span>
+                            </div>
+        
+                            <h5 class="text-uppercase mt-4 mb-4 text-center text-danger">Thông tin cá nhân</h5>
+        
+                            <!-- Họ và tên -->
+                            <div class="mb-3">
+                                <label for="ten" class="form-label">Họ và tên:</label>
+                                <input type="text" id="ten" class="form-control" placeholder="Nhập họ và tên" onblur="ktraHoten()">
+                                <span id="ten-error" class="error text-danger">* bắt buộc</span>
+                                <span id="ten-hl" class="hople"></span>
+                            </div>
+        
+                            <!-- Ngày sinh -->
+                            <div class="mb-3">
+                                <label for="ngaysinh" class="form-label">Ngày sinh:</label>
+                                <input type="date" id="ngaysinh" class="form-control" onblur="ktraNS()">
+                                <span id="ngaysinh-error" class="error text-danger"></span>
+                                <span id="ngaysinh-hl" class="hople"></span>
+                            </div>
+        
+                            <!-- Giới tính -->
+                            <div class="mb-3">
+                                <label class="form-label">Giới tính:</label><br>
+                                <input type="radio" name="gioitinh" id="nam" value="nam" onblur="Ktragioitinh()">
+                                <label for="nam">Nam</label>
+                                <input type="radio" name="gioitinh" id="nu" value="nu" onblur="Ktragioitinh()">
+                                <label for="nu">Nữ</label>
+                                <span id="gioitinh-error" class="error text-danger"></span>
+                                <span id="gioitinh-hl" class="hople"></span>
+                            </div>
+        
+                            <!-- Địa chỉ -->
+                            <div class="mb-3">
+                                <label for="dc" class="form-label">Địa chỉ:</label>
+                                <input type="text" id="dc" class="form-control" placeholder="Nhập địa chỉ" onblur="ktraDiachi()">
+                                <span id="dc-error" class="error text-danger"></span>
+                                <span id="dc-hl" class="hople"></span>
+                            </div>
+        
+                            <!-- Điện thoại -->
+                            <div class="mb-3">
+                                <label for="sdt" class="form-label">Điện thoại:</label>
+                                <input type="text" id="sdt" class="form-control" placeholder="Nhập số điện thoại" onblur="ktraSDT()">
+                                <span id="sdt-error" class="error text-danger">phải là số</span>
+                                <span id="sdt-hl" class="hople"></span>
+                            </div>
+        
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email:</label>
+                                <input type="email" id="email" class="form-control" placeholder="Nhập email" onblur="ktraEmail()">
+                                <span id="email-error" class="error text-danger">nhập đúng địa chỉ mail</span>
+                                <span id="email-hl" class="hople"></span>
+                            </div>
+                        </form>
+                    </div>
+        
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-danger w-100" onclick="validateForm(event)">Đăng kí</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- modal đăng nhập -->
+
+                
+                    <div class="modal modal-custom" id="mymodal1">
+                        <div class="modal-dialog modal-lg" style="max-width: 700px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="w-100 text-center text-uppercase text-danger">Đăng nhập tài khoản</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                    
+                                <div class="modal-body">
+                                    <form id="register-form">
+                                        <!-- Tên đăng nhập -->
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Tên đăng nhập:</label>
+                                            <input type="text" id="namedn" class="form-control" placeholder="Nhập tên đăng nhập">
+                                            <span id="name-errordn" class="errordn"></span>
+                                            <span id="name-hldn" class="hopledn"></span>
+                                        </div>
+                    
+                                        <!-- Mật khẩu -->
+                                        <div class="mb-3">
+                                            <label for="pass" class="form-label">Mật khẩu:</label>
+                                            <input type="password" id="passdn" class="form-control" placeholder="Nhập mật khẩu">
+                                            <span id="pass-errordn" class="errordn"></span>
+                                            <span id="pass-hldn" class="hopledn"></span>
+                                        </div>
+                                       
+                                    </form>
+                                </div>
+                    
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <button type="button" class="btn btn-danger w-100" onclick="ktraDangNhap(event)">Đăng nhập</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <ul class="nav nav-menu justify-content-center text-uppercase">
+                            <li class="nav-item">
+                                <a class="nav-link text-light mt-1" href="home.html">Trang chủ</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-light mt-1" data-bs-toggle="dropdown" href="#">Sản phẩm</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item text-light" href="dodien.html">Thiết bị điện tử</a></li>
+                                    <li><a class="dropdown-item text-light" href="dodadung.html">Đồ gia dụng</a></li>
+                                    <li><a class="dropdown-item text-light" href="phukien.html">Phụ kiện</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link text-light mt-1" href="#thongtin">Thông tin</a></li>
+                            <li class="nav-item"><a class="nav-link text-light mt-1" href="#lienhe">Liên hệ</a></li>
+                            <li class="nav-item"><a class="nav-link text-light mt-1 me-5" href="#gioithieu">Giới thiệu</a></li>
+                        </ul>                
+                    </div>
+        
+
+        <div class="container mt-5" style="font-family: serif;">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <h3 id="productName" class="mb-4" style="margin-bottom: 190px; margin-left: 500px; font-weight: 600;">Sản phẩm</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img id="productImage" style="height: 545px; width: 450px;margin-bottom: 100px;" src="../img/default.png" alt="Sản phẩm">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="p-3 border rounded bg-light" style="margin-left: 130px; height: 550px;">
+                                <h4>Tùy chọn</h4>
+                                <div class="form-group">
+                                    <label for="quantity">Chọn số lượng:</label>
+                                    <input type="number" id="quantity" class="form-control w-50" min="1" value="1" onchange="updateTotal()" />
+                                </div>
+                                <p class="card-text">Giá: <span id="productPrice">0</span>VND</p>
+                                <p class="card-text">Tổng tiền: <span id="total-price">0</span></p>
+                                <button class="btn btn-danger btn-block" id="btnMuaHang">Mua hàng</button>
+                                
+                                <p class="mt-3" id="productDescription">Thông tin sản phẩm sẽ hiển thị ở đây.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row footer" style="font-family: 'Times New Roman', Times, serif;">
+                    <div class="col-5 lienhe ">
+                    <div class="ms-5">
+                    <h4 style="margin-left: 5px;">Liên hệ với chúng tôi</h4>
+                    <p>📍12 Nguyễn Văn Bảo, Phường 1, Quận Gò Vấp, Thành Phố Hồ Chí Minh</p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.8582379826526!2d106.68427047480561!3d10.822158889329412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174deb3ef536f31%3A0x8b7bb8b7c956157b!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2hp4buHcCBUUC5IQ00!5e0!3m2!1svi!2s!4v1743161832514!5m2!1svi!2s" width="350" height="150" style="border:0; " allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <p>📞Hotline : 0345749384 - 0327241110</p>
+                    <p><a style="text-decoration: none; color: black;" href="mailto:📩Email : phamminhthinh2005@gmail.com - nguatroiiale@gmail.com">📩Email : phamminhthinh2005@gmail.com - nguatroiiale@gmail.com</a></p>
+                    <div class="social-icons">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/share/186GR2feDJ/?mibextid=wwXIfr" target="_blank">
+                          <i class="fab fa-facebook"></i>
+                        </a>
+                      
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/miyn.hinth2?igsh=MWRqcXV4N3R5bWUxZA%3D%3D&utm_source=qr" target="_blank">
+                          <i class="fab fa-instagram"></i>
+                        </a>
+                      
+                        <!-- Zalo -->
+                        <a href="https://zalo.me/0345749384" target="_blank">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" class="zalo-icon mb-2" alt="Zalo">
+                        </a>
+                      </div>
+                </div>
+                </div>
+
+                <div class="col-4 hotro">
+                    <h4 style="margin-left: 15px;">Hỗ trợ khách hàng</h4>
+                    <ul>
+                        <li><a href="chinhsachvaquydinhchung.html">Chính sách & Quy định chung</a></li>
+                        <li><a href="chinhsachbaomat.html">Chính sách bảo mật</a></li>
+                        <li><a href="huongdanmuahang.html">Hướng dẫn mua hàng</a></li>
+                        <li><a href="huongdanthanhtoan.html">Hướng dẫn thanh toán</a></li>
+                        <li><a href="chinhsachgiaohang.html">Chính sách giao hàng</a></li>
+                        <li><a href="chinhsachdoitra.html">Chính sách đổi trả</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-3 lienket">
+                    <h4 style="margin-left: 15px;">Liên kết</h4>
+                    <ul>
+                        <li><a href="home.html">Trang chủ</a></li>
+                        <li><a href="#">Sản phẩm</a></li>
+                        <li><a href="#">Thông tin</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Giới thiệu</a></li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name") || "Sản phẩm";
+    const image = params.get("image") || "../img/default.png";
+    const price = params.get("price") || "0";
+    const description = params.get("description") ? decodeURIComponent(params.get("description")) : "Không có mô tả.";
+
+    // Lấy dữ liệu từ LocalStorage nếu có
+    const productData = JSON.parse(localStorage.getItem("selectedProduct"));
+    if (productData) {
+        document.getElementById("productName").innerText = productData.name;
+        document.getElementById("productImage").src = productData.image;
+        document.getElementById("productPrice").innerText = productData.price.toLocaleString("vi-VN");
+        document.getElementById("productDescription").innerHTML = productData.description.replace(/\n/g, "<br>");
+    } else {
+        // Nếu không có dữ liệu từ LocalStorage, dùng dữ liệu từ URL
+        document.getElementById("productName").innerText = name;
+        document.getElementById("productImage").src = image;
+        document.getElementById("productPrice").innerText = parseFloat(price).toLocaleString("vi-VN");
+        document.getElementById("productDescription").innerHTML = description.replace(/\n/g, "<br>");
+    }
+
+    updateTotal();
+});
+
+function updateTotal() {
+    const priceText = document.getElementById("productPrice").innerText.replace(/\./g, "").replace(/,/g, "").trim();
+    const price = parseFloat(priceText) || 0;
+    const quantity = parseInt(document.getElementById("quantity").value, 10) || 1;
+    if (quantity < 1) {
+        document.getElementById("quantity").value = 1;
+    }
+    const totalPrice = price * quantity;
+    document.getElementById("total-price").innerText = totalPrice.toLocaleString("vi-VN") + " VND";
+}
+
+// Thêm sản phẩm vào giỏ hàng
+document.getElementById("btnMuaHang").addEventListener("click", () => {
+    const product = {
+        name: document.getElementById("productName").innerText,
+        price: parseFloat(document.getElementById("productPrice").innerText.replace(/\./g, "").replace(/,/g, "")) || 0,
+        quantity: parseInt(document.getElementById("quantity").value, 10),
+        image: document.getElementById("productImage").src,
+        description: document.getElementById("productDescription").innerText
+    };
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Sản phẩm đã được thêm vào giỏ hàng!");
+    window.location.href = "giohang.html";
+});
+
+    </script>
+</body>
+</html>

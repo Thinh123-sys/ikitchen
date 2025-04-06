@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website dụng cụ bếp</title>
+    <link rel="stylesheet" href="../css/style.css">
+      
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <style> 
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container-fluid{
+    height: auto;
+    background-size: cover;
+    background-color: rgb(17, 17, 17);
+}
+
+.dau{
+    height: 100px;
+    position: relative;
+    background-color: rgb(8, 8, 8);
+    color: white;
+}
+
+#logo{
+    height: 90px;
+    width: 90px;
+    top: 10px;
+    position: absolute;
+    left: 60px;
+}
+
+.chu1{
+    height: 80px;
+    margin-left: 150px;
+    margin-top: 35px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.input-group{
+    margin-top: 30px;
+    margin-left: 25px;
+}
+
+.user, .giohang{
+    font-size: 30px;
+}
+
+.dangky{
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+.dk{
+    margin-right: 10px;
+}
+
+.dn, .dk ,.gh{
+    text-decoration: none;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.nav-menu{
+    background-color: #e21818;
+    height: 50px;
+}
+
+.dropdown-menu{
+    background-color: #e21818;
+}
+
+.dropdown-item:hover{
+    color: white;
+    background-color: rgb(31, 30, 31);
+}
+
+.nav-item:hover{
+    background-color: rgb(31, 30, 31);
+}
+
+/* Định dạng submenu */
+.dropdown-submenu {
+position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+top: 0;
+left: 100%;
+margin-top: -1px;
+display: none;
+position: absolute;
+}
+
+/* Hiển thị menu cấp 3 khi hover */
+.dropdown-submenu:hover .dropdown-menu {
+display: block;
+}
+
+.content{
+    height: 1000px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.box-content{
+    height: 970px;
+    width: 850px;
+    background-color: #fff;
+    padding-top: 10px;
+}
+
+.footer{
+    height: 230px;
+    background-color: #fff;
+    padding-top: 20px;
+}
+
+.hotro ul li a ,.lienket  ul li a{
+    text-decoration: none;
+    color: black;
+   
+}
+
+.hotro ul li a:hover ,.lienket  ul li a:hover{
+    color: #e21818;
+}
+
+.hotro, .lienket{
+    line-height: 30px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    font-size: 30px;
+    text-decoration: none;
+  }
+
+  .fa-facebook {
+    color: #1877F2;
+  }
+
+  .fa-instagram {
+    color: #E4405F;
+  }
+
+  .zalo-icon {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+  }
+        </style>
+
+        <script>
+        var myCarousel = new bootstrap.Carousel(document.querySelector('#myCarousel'), {
+            interval: 1000, // Chạy sau mỗi 3 giây
+            wrap: true // Chạy vòng lặp vô hạn
+        });
+    </script>
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <div class="row dau">
+                    <div class="col-3">
+                        <h2 class="chu1">IKITCHEN</h2>
+                        <img id="logo" src="../img/logo.png" alt="logo">
+                    </div>
+    
+                    <div class="col-4">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-search"></i> <!-- Icon tìm kiếm -->
+                            </span>
+                            <input type="text" class="form-control" placeholder="Nhập từ khóa">
+                        </div>
+                    </div>
+                    
+    
+                    <div class="col-5 me-0">
+                        <div class="dangky">
+                        <i class="bi bi-person-fill user"></i> <!-- User đậm -->
+                        <span><input type="button" value="Đăng nhập" class="btn btn text-light dk mb-1 dn" data-bs-toggle="modal" data-bs-target="#mymodal1"></span>
+                        <span>/</span>
+                        <span><input type="button" value="Đăng ký" class="btn btn text-light dk mb-1" data-bs-toggle="modal" data-bs-target="#mymodal2"></span>
+                        <div id="cart-icon" style="position: absolute;">
+                            <i style="position: absolute; left: 360px; bottom: 12px;" class="bi bi-cart-fill"></i>
+                            <span style="position: absolute; left: 380px; bottom: 11px;" id="cart-count">0</span>
+                        </div>
+                        <span><a class="gh" href="giohang.html">Giỏ hàng</a></span>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="row">
+                <ul class="nav nav-menu justify-content-center text-uppercase">
+                    <li class="nav-item">
+                        <a class="nav-link text-light mt-1" href="home.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light mt-1" data-bs-toggle="dropdown" href="#">Sản phẩm</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item text-light" href="dodien.html">Thiết bị điện tử</a></li>
+                            <li><a class="dropdown-item text-light" href="dodadung.html">Đồ gia dụng</a></li>
+                            <li><a class="dropdown-item text-light" href="phukien.html">Phụ kiện</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-light mt-1" href="#thongtin">Thông tin</a></li>
+                    <li class="nav-item"><a class="nav-link text-light mt-1" href="#lienhe">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link text-light mt-1 me-5" href="#gioithieu">Giới thiệu</a></li>
+                </ul>                
+            </div>
+            
+            <div class="row content mt-5 justify-content-center">
+                    <div class="box-content">
+                        <h4 style="font-weight: 600;">CHÍNH SÁCH BẢO MẬT</h4>
+                        <p>Chúng tôi cam kết bảo vệ thông tin cá nhân của khách hàng khi mua sắm và sử dụng dịch vụ trên website. 
+                            Chính sách bảo mật này quy định về việc thu thập, sử dụng và bảo vệ thông
+                             tin của khách hàng nhằm đảm bảo quyền riêng tư và bảo mật thông tin theo quy định pháp luật Việt Nam.</p>
+                        <h5 style="font-weight: 600;">I. MỤC ĐÍCH VÀ PHẠM VI THU THẬP THÔNG TIN</h5>
+                        <p>Chúng tôi thu thập thông tin cá nhân của khách hàng nhằm các mục đích sau:</p>
+                        <ul>
+                            <li>Hỗ trợ khách hàng trong quá trình mua sắm và sử dụng dịch vụ.</li>
+                            <li>Xử lý đơn hàng, giao hàng và chăm sóc hậu mãi.</li>
+                            <li>Cung cấp thông tin về sản phẩm, chương trình khuyến mãi nếu khách hàng đồng ý nhận.</li>
+                            <li>Nâng cao chất lượng dịch vụ, cá nhân hóa trải nghiệm mua sắm.</li>
+                        </ul>
+                        <p>Thông tin cá nhân thu thập bao gồm nhưng không giới hạn:</p>
+                        <ul>
+                            <li>Họ tên, địa chỉ, số điện thoại, email.</li>
+                            <li>Thông tin tài khoản ngân hàng (trong trường hợp thanh toán trực tuyến).</li>
+                            <li>Lịch sử giao dịch, thói quen mua sắm để phân tích và cải thiện dịch vụ.</li>
+                        </ul>
+                        <h5 style="font-weight: 600;">II.CAM KẾT BẢO MẬT THÔNG TIN</h5>
+                        <p>Chúng tôi cam kết bảo mật thông tin cá nhân của khách hàng bằng các biện pháp bảo vệ sau:</p>
+                        <ul>
+                            <li>Sử dụng công nghệ mã hóa, bảo mật hệ thống để bảo vệ dữ liệu.</li>
+                            <li>Kiểm soát chặt chẽ quyền truy cập, chỉ nhân viên có trách nhiệm mới được tiếp cận dữ liệu.</li>
+                            <li>Không tiết lộ, chuyển giao thông tin khách hàng cho bên thứ ba nếu không có sự đồng ý của khách hàng.</li>
+                        </ul>
+                        
+                        <p>Tuy nhiên, khách hàng cần lưu ý rằng không có hệ thống nào bảo mật tuyệt 
+                            đối, vì vậy, khách hàng cũng cần bảo vệ thông tin tài khoản và không chia sẻ với người khác.</p>
+                            <h5 style="font-weight: 600;">III.QUYỀN LỢI CỦA KHÁCH HÀNG</h5>
+                            <p>Khách hàng có quyền:</p>
+                            <ul>
+                                <li>Yêu cầu xem lại thông tin cá nhân đang được lưu trữ.</li>
+                                <li>Yêu cầu chỉnh sửa hoặc xóa thông tin nếu không còn sử dụng dịch vụ.</li>
+                                <li>Từ chối nhận email quảng cáo bất cứ lúc nào.</li>
+                                <li>Khiếu nại nếu phát hiện thông tin cá nhân bị sử dụng sai mục đích.</li>
+                            </ul>
+                            <p>Mọi yêu cầu liên quan đến thông tin cá nhân, khách hàng có thể liên hệ với chúng tôi qua:</p>
+                            <p>📞Hotline : 0345749384 - 0327241110</p>
+                        <p><a style="text-decoration: none; color: black;" href="mailto:📩Email : phamminhthinh2005@gmail.com - nguatroiiale@gmail.com">📩Email : phamminhthinh2005@gmail.com - nguatroiiale@gmail.com</a></p>
+                    </div>
+            </div>
+
+            <div class="row footer" style="font-family: 'Times New Roman', Times, serif;">
+                        <div class="col-5 lienhe ">
+                        <div class="ms-5">
+                        <h4 style="margin-left: 5px;">Liên hệ với chúng tôi</h4>
+                        <p>📍12 Nguyễn Văn Bảo, Phường 1, Quận Gò Vấp, Thành Phố Hồ Chí Minh</p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.8582379826526!2d106.68427047480561!3d10.822158889329412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174deb3ef536f31%3A0x8b7bb8b7c956157b!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2hp4buHcCBUUC5IQ00!5e0!3m2!1svi!2s!4v1743161832514!5m2!1svi!2s" width="350" height="150" style="border:0; " allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <p>📞Hotline : 0345749384 - 0327241110</p>
+                        <p><a style="text-decoration: none; color: black;" href="mailto:📩Email : phamminhthinh2005@gmail.com - nguatroiiale@gmail.com">📩Email : phamminhthinh2005@gmail.com - nguatroiiale@gmail.com</a></p>
+                        <div class="social-icons">
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/share/186GR2feDJ/?mibextid=wwXIfr" target="_blank">
+                              <i class="fab fa-facebook"></i>
+                            </a>
+                          
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/miyn.hinth2?igsh=MWRqcXV4N3R5bWUxZA%3D%3D&utm_source=qr" target="_blank">
+                              <i class="fab fa-instagram"></i>
+                            </a>
+                          
+                            <!-- Zalo -->
+                            <a href="https://zalo.me/0345749384" target="_blank">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" class="zalo-icon mb-2" alt="Zalo">
+                            </a>
+                          </div>
+                    </div>
+                    </div>
+
+                    <div class="col-4 hotro">
+                        <h4 style="margin-left: 15px;">Hỗ trợ khách hàng</h4>
+                        <ul>
+                            <li><a href="chinhsachvaquydinhchung.html">Chính sách & Quy định chung</a></li>
+                            <li><a href="chinhsachbaomat.html">Chính sách bảo mật</a></li>
+                            <li><a href="huongdanmuahang.html">Hướng dẫn mua hàng</a></li>
+                            <li><a href="huongdanthanhtoan.html">Hướng dẫn thanh toán</a></li>
+                            <li><a href="chinhsachgiaohang.html">Chính sách giao hàng</a></li>
+                            <li><a href="chinhsachdoitra.html">Chính sách đổi trả</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-3 lienket">
+                        <h4 style="margin-left: 15px;">Liên kết</h4>
+                        <ul>
+                            <li><a href="home.html">Trang chủ</a></li>
+                            <li><a href="#">Sản phẩm</a></li>
+                            <li><a href="#">Thông tin</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="#">Giới thiệu</a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+
+</body>
+</html>
