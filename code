@@ -1,0 +1,74 @@
+@Override
+    public double calculateTotalOrder(String orderId) {
+        String query="MATCH (o:Order{orderId:$orderId})-[r:ORDERS]->(p:Product)\n" +
+                "RETURN sum(r.quantity*r.unitPrice*(1-r.discount))  AS total";
+        try(Session session=neo4jConnManager.opSession()) {
+            return session.executeRead(tx->{
+                var record= tx.run(query, Map.of("orderId",orderId)).single();
+                if(record.get("total").isNull()){
+                    return 0.0;
+                }
+                return record.get("total").asDouble();
+            });
+        }
+    }
+@Override
+    public List<Room> listRooms(String keywords) {
+
+        String query="""
+        CALL db.index.fulltext.queryNodes("roomSearchIndex", $keywords)
+        YIELD node, score
+        RETURN node
+        ORDER BY score DESC
+    """;
+        Map<String,Object> param=Map.of("keywords",keywords);
+
+        try (Session session = connManager.openSession()) {
+            return session.executeRead(tx ->
+                    tx.run(query, param)
+                            .list(record ->
+                                    mapper.toObject(
+                                            record.get("node").asNode().asMap(),
+                                            Room.class
+                            )
+                    )
+            );
+        }
+    }
+
+@Override
+    public Map<ProductDTO, Double> layProductTheoGiaTriTB() {
+        Map<Product,Double> data=productRepository.layProductTheoGiaTriTB();
+        Map<ProductDTO,Double> res=new HashMap<>();
+
+        for(Product p:data.keySet()){
+            ProductDTO dto=new ProductDTO(
+                    p.getProductId(),
+                    p.getProductName(),
+                    p.getUnit(),
+                    p.getUnitPrice(),
+                    p.getUnitsInStock(),
+                    null
+            );
+            res.put(dto,data.get(p));
+        }
+        return res;
+    }
+@Override
+    public Map<Product, Double> layProductTheoGiaTriTB() {
+        String query="MATCH (p:Product) WITH AVG(p.unitPrice) AS " +
+                "tbPrice MATCH (p:Product) WHERE p.unitPrice>tbPrice RETURN p as product, p.unitPrice as price";
+        try(Session session= neo4jConnManager.opSession()) {
+            return session.executeRead(tx-> {
+                return tx.run(query)
+                        .stream()
+                        .collect(Collectors.toMap(
+                                record -> mapper.toObject(record.get("product").asNode().asMap(), Product.class
+                                ),
+                                record -> record.get("price").asDouble(0.0),
+                                (a, b) -> a,
+                                LinkedHashMap::new
+                  ));
+            });
+        }
+    }
